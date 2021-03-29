@@ -44,6 +44,7 @@ def metrics(data):
         df_sample=data,
         score_column=monitor_parameters["score_column"][0],
         label_column=monitor_parameters["label_column"][0],
+        label_type="categorical"
     )
     
     output = model_evaluator.compare_performance().to_dict(orient='records')
