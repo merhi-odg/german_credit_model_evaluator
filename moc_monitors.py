@@ -499,12 +499,13 @@ class ModelEvaluator:
         """
 
         if self.label_type == "categorical":
-            self._eval_classifier()
+            return self._eval_classifier()
 
         elif self.label_type == "numerical":
-            self._eval_regressor()
-
-        return self.performance_comparison
+            return self._eval_regressor()
+        
+        else:
+            return pd.DataFrame()
 
 
     def _eval_regressor(self):
@@ -537,7 +538,7 @@ class ModelEvaluator:
             index=["baseline", "sample"],
         )
 
-        self.performance_comparison = metrics_df
+        return metrics_df
 
 
     def _eval_classifier(self):
@@ -583,7 +584,7 @@ class ModelEvaluator:
             index=["baseline", "sample"],
         )
 
-        self.performance_comparison = metrics_df
+        return metrics_df
 
 
 class BiasMonitor:
