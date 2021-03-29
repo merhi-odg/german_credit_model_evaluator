@@ -46,9 +46,6 @@ def metrics(data):
         label_column=monitor_parameters["label_column"][0],
     )
     
-    output = model_evaluator.compare_performance(
-        pre_defined_metric='classification_metrics',
-        user_defined_metric=None,
-    ).to_dict(orient='records')
+    output = model_evaluator.compare_performance().to_dict(orient='records')
     
     yield output
