@@ -39,16 +39,15 @@ def metrics(data):
     
     monitor_parameters = set_detector_parameters(schema)
     
-    bias_montior = BiasMonitor(
-        df=data,
+    model_evaluator = ModelEvaluator(
+        df_baseline=df_baseline,
+        df_sample=data,
         score_column=monitor_parameters["score_column"][0],
         label_column=monitor_parameters["label_column"][0],
-        protected_class='gender',
-        reference_group='male'
     )
     
-    output = bias_montior.compute_bias_metrics(
-        pre_defined_metric='aequitas_bias',
+    output = model_evaluator.compare_performance(
+        pre_defined_metric='classification_metrics',
         user_defined_metric=None,
     ).to_dict(orient='records')
     
