@@ -23,7 +23,7 @@ def begin():
 # modelop.metrics
 def metrics(data):
     
-    df_baseline = pd.read_json('df_baseline_scored.json', orient='records', lines=True)
+    # df_baseline = pd.read_json('df_baseline_scored.json', orient='records', lines=True)
     
     #if 'label_value' in df_baseline.columns and 'label' not in df_baseline.columns:
     #    df_baseline.rename(
@@ -40,13 +40,13 @@ def metrics(data):
     monitor_parameters = set_detector_parameters(schema)
     
     model_evaluator = ModelEvaluator(
-        df_baseline=df_baseline,
+        df_baseline=data,
         df_sample=data,
         score_column=monitor_parameters["score_column"][0],
         label_column=monitor_parameters["label_column"][0],
         label_type="categorical"
     )
     
-    output = model_evaluator.compare_performance().to_dict(orient='records')
+    output = model_evaluator.compare_performance().to_dict(orient='records')[0]
     
     yield output
