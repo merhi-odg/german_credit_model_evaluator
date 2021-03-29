@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import json
 import pickle
-from moc_monitors import BiasMonitor
+from moc_monitors import ModelEvaluator
 from moc_schema_infer import set_detector_parameters
 
 
