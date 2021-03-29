@@ -24,6 +24,7 @@ def begin():
 def metrics(data):
     
     # df_baseline = pd.read_json('df_baseline_scored.json', orient='records', lines=True)
+    # print(df_baseline.columns, flush=True)
     
     #if 'label_value' in df_baseline.columns and 'label' not in df_baseline.columns:
     #    df_baseline.rename(
@@ -31,7 +32,6 @@ def metrics(data):
     #        inplace=True
     #    )
     
-    print(df_baseline.columns, flush=True)
     
     print('',flush=True)
     
